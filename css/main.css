@@ -6,13 +6,13 @@ body {
 
 section {
     padding: 20px;
-    max-width: 576px;
+    max-width: 540px;
     width: 100%;
     margin: 0 auto;
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 400;
     margin: 50px 0 25px -1px;
 }
@@ -22,14 +22,15 @@ h1 {
 }
 .dot {
     display: inline-block;
-    width: 8px;
-    height: 8px;
+    width: 5px;
+    height: 5px;
     border-radius: 4px;
-    margin: 0 8px 9px 0;
+    margin: 0 10px 11px 0;
 }
 .dot[data-up=true] {
-    background: #2B4;
+    background: #CCC;
 }
 .dot[data-up=false] {
-    background: red;
+    background: #D00;
+    box-shadow: 0 1px 3px #D88;
 }
