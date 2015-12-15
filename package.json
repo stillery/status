@@ -1,5 +1,6 @@
 {
     "dependencies": {
-        "aws-sdk": ">= 2.0.9"
+        "aws-sdk": ">= 2.0.9",
+        "request": ">= 2.67.0"
     }
 }
