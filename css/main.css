@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    font: 400 12px "Open Sans", sans-serif;
+    text-rendering: optimizeLegibility;
+}
+
+section {
+    padding: 20px;
+    max-width: 576px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 50px 0 25px -1px;
+}
+
+#dots {
+    line-height: 8px;
+}
+.dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    margin: 0 8px 9px 0;
+}
+.dot[data-up=true] {
+    background: #2B4;
+}
+.dot[data-up=false] {
+    background: red;
+}
