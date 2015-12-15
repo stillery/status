@@ -1,3 +1,4 @@
 *.zip
+status.json.gz
 node_modules
 npm-debug.log
