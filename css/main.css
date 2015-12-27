@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font: 400 12px "Open Sans", sans-serif;
+    font: 400 12px "Roboto", sans-serif;
     text-rendering: optimizeLegibility;
 }
 
@@ -12,13 +12,16 @@ section {
 }
 
 h1 {
-    font-size: 18px;
-    font-weight: 300;
-    margin: 50px 0 25px -1px;
+    font-size: 14px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 50px 0 25px 0;
 }
 
 #dots {
     line-height: 8px;
+    position: relative;
 }
 .dot {
     display: inline-block;
@@ -34,4 +37,18 @@ h1 {
 .dot[data-up=false] {
     background: #D00;
     box-shadow: 0 1px 3px #D88;
+}
+
+.marker {
+    position: absolute;
+    right: 100%;
+    padding-right: 11px;
+    font-size: 9px;
+    line-height: 9px;
+    margin-top: -1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #666;
+    letter-spacing: 1px;
+    white-space: nowrap;
 }
