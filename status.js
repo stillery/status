@@ -1,4 +1,4 @@
-var request = require('request');
+var http = require('http');
 var zlib = require('zlib');
 var AWS = require('aws-sdk');
 
@@ -7,7 +7,7 @@ var s3 = new AWS.S3();
 
 var BUCKET = 'status.stillery.co';
 var KEY = 'status.json.gz';
-var TEST_URL = 'http://origin.stillery.co/test.stillery.co/test.json';
+var TEST_URL = 'http://test.url/';
 
 function get(then) {
 	s3.getObject({ Bucket: BUCKET, Key: KEY }, function(err, data) {
@@ -28,11 +28,8 @@ function get(then) {
 
 function update(then) {
 	return function(data) {
-		request({
-			url: TEST_URL,
-			timeout: 1000
-		}, function(err, res, body) {
-			var up = (!err && res.statusCode === 200);
+		var req = http.request(TEST_URL, function(res) {
+			var up = (res.statusCode === 200);
 			data.push({
 				ts: Date.now(),
 				up: up
@@ -40,6 +37,14 @@ function update(then) {
 
 			then(data);
 		});
+		req.setTimeout(3000, function(res) {
+			data.push({
+				ts: Date.now(),
+				up: false
+			});
+			then(data);
+		});
+		req.end('');
 	};
 }
 
