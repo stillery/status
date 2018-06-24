@@ -1,3 +1,5 @@
+const SIZE = 4;
+
 function get(callback) {
     http.get({
         url: './status.json.gz',
@@ -9,32 +11,26 @@ function get(callback) {
 
 function display(data) {
     data = data.reverse();
-    console.log(data);
+    console.log(data.length);
 
-    var last = data[0];
-    $('#status').innerHTML = last.up ? 'Everything\'s good!' : 'Uh oh, something\'s gone wrong.';
+    document.getElementById('status').textContent = data[0].up ? 'ok' : 'down';
+    document.getElementById('status').classList.add(data[0].up ? 'ok' : 'down');
 
-    var dots = '<div class="marker">Now</div>';
-    for (var i = 0; i < data.length; i++) {
-        if (i > 36) {
-            var exp = Math.log(i / 36) / Math.log(2);
-            if (Math.floor(exp) === exp) {
-                var hours = i / 12;
-                var text;
-                if (hours < 24) {
-                    text = hours + ' hours ago';
-                } else if (hours === 24) {
-                    text = 'A day ago';
-                } else {
-                    text = hours / 24 + ' days ago';
-                }
-                dots += '<div class="marker">' + text + '</div>';
-            }
-        }
+    const rows = Math.ceil(data.length / 288);
 
-        dots += '<div class="dot" data-up="' + data[i].up.toString() + '"></div>';
+    const grid = document.getElementById('grid');
+    const ctx = grid.getContext('2d');
+
+    grid.width = 288 * SIZE;
+    grid.height = rows * SIZE;
+
+    for (let i = 0; i < data.length; i++) {
+        const row = i / 288 | 0;
+        const col = i % 288;
+
+        ctx.fillStyle = data[i].up ? '#A4E986' : '#EC6676';
+        ctx.fillRect(col * SIZE, row * SIZE, SIZE, SIZE);
     }
-    $('#dots').innerHTML = dots;
 }
 
 get(display);

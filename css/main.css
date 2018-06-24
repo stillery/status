@@ -1,54 +1,17 @@
 body {
-    margin: 0;
-    font: 400 12px "Roboto", sans-serif;
-    text-rendering: optimizeLegibility;
+    font: 400 16px/12px "Latin Modern Mono", monospace;
+    margin: 16px;
 }
 
-section {
-    padding: 20px;
-    max-width: 540px;
-    width: 100%;
-    margin: 0 auto;
+#current {
+    margin-bottom: 16px;
 }
-
-h1 {
-    font-size: 14px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin: 50px 0 25px 0;
+#status {
+    font-weight: 700;
 }
-
-#dots {
-    line-height: 8px;
-    position: relative;
+#status.ok {
+    color: #83BA6B;
 }
-.dot {
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    border-radius: 4px;
-    margin: 0 10px 11px 0;
-}
-.dot[data-up=true] {
-    background: #DDD;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.5) inset;
-}
-.dot[data-up=false] {
-    background: #D00;
-    box-shadow: 0 1px 3px #D88;
-}
-
-.marker {
-    position: absolute;
-    right: 100%;
-    padding-right: 11px;
-    font-size: 9px;
-    line-height: 9px;
-    margin-top: -1px;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: #666;
-    letter-spacing: 1px;
-    white-space: nowrap;
+#status.down {
+    color: #BC515E;
 }

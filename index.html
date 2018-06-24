@@ -2,14 +2,12 @@
 <html>
 	<head>
 		<title>Stillery System Status</title>
-		<link rel="stylesheet" href="//brick.a.ssl.fastly.net/Roboto:500,900">
+		<link rel="stylesheet" href="https://brick.freetls.fastly.net/Latin+Modern+Mono:400,700">
 		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
-		<section>
-			<h1 id="status"></h1>
-			<div id="dots"></div>
-		</section>
+		<div id="current">status <span id="status"></span></div>
+		<canvas id="grid"></canvas>
 
 		<script src="js/vendor/http.min.js"></script>
 		<script src="js/vendor/mq.min.js"></script>
