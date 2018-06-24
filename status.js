@@ -1,4 +1,4 @@
-var http = require('http');
+var https = require('https');
 var zlib = require('zlib');
 var AWS = require('aws-sdk');
 
@@ -7,7 +7,7 @@ var s3 = new AWS.S3();
 
 var BUCKET = 'status.stillery.co';
 var KEY = 'status.json.gz';
-var TEST_URL = 'http://test.url/';
+var TEST_URL = 'https://test.url/';
 
 function get(then) {
 	s3.getObject({ Bucket: BUCKET, Key: KEY }, function(err, data) {
@@ -28,20 +28,14 @@ function get(then) {
 
 function update(then) {
 	return function(data) {
-		var req = http.request(TEST_URL, function(res) {
+		var req = https.request(TEST_URL, function(res) {
 			var up = (res.statusCode === 200);
-			data.push({
-				ts: Date.now(),
-				up: up
-			});
+			data.push(up ? 1 : 0);
 
 			then(data);
 		});
 		req.setTimeout(3000, function(res) {
-			data.push({
-				ts: Date.now(),
-				up: false
-			});
+			data.push(0);
 			then(data);
 		});
 		req.end('');
