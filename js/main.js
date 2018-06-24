@@ -29,7 +29,7 @@ function display(data) {
         const col = i % 288;
 
         ctx.fillStyle = data[i] ? '#A4E986' : '#EC6676';
-        ctx.fillRect(col * SIZE, row * SIZE, SIZE, SIZE);
+        ctx.fillRect(col * SIZE, row * SIZE, SIZE / 2, SIZE / 2);
     }
 }
 
