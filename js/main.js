@@ -13,8 +13,8 @@ function display(data) {
     data = data.reverse();
     console.log(data.length);
 
-    document.getElementById('status').textContent = data[0].up ? 'ok' : 'down';
-    document.getElementById('status').classList.add(data[0].up ? 'ok' : 'down');
+    document.getElementById('status').textContent = data[0] ? 'ok' : 'down';
+    document.getElementById('status').classList.add(data[0] ? 'ok' : 'down');
 
     const rows = Math.ceil(data.length / 288);
 
@@ -28,7 +28,7 @@ function display(data) {
         const row = i / 288 | 0;
         const col = i % 288;
 
-        ctx.fillStyle = data[i].up ? '#A4E986' : '#EC6676';
+        ctx.fillStyle = data[i] ? '#A4E986' : '#EC6676';
         ctx.fillRect(col * SIZE, row * SIZE, SIZE, SIZE);
     }
 }
